@@ -1,0 +1,35 @@
+<html>
+<h1>Order Management</h1>
+<form method="POST">
+    {% csrf_token %} 
+    {{form.as_p}}
+    <input type="submit" value="Save">
+</form>
+
+<label>Name Contains</label>
+<input>
+<button>Search</button>
+
+<table border="1">
+<tr>
+
+<th>Id</th>
+<th>Customer</th>
+<th>Date</th>
+<th>Items</th>
+<th>Action</th>
+</tr>
+
+{% for Order in Ordrs %}
+<tr>
+    <td>{{Order.id}}</td>
+    <td>{{Order.customer}}</td>
+    <td>{{Order.date}}</td>
+    <td>{{Order.item.all|join:", " }}</td>
+    <td><button>View</button></td>
+
+</tr>
+
+{% endfor %}
+</table>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<h1>Item Management</h1>
+<form method="POST">
+    {% csrf_token %} 
+    {{form.as_p}}
+    <input type="submit" value="Save">
+</form>
+
+<label>Name Contains</label>
+<input>
+<button>Search</button>
+
+<table border="1">
+<tr>
+
+<th>Id</th>
+<th>Name</th>
+<th>Price</th>
+<th>Image</th>
+<th>Category</th>
+<th>Unit</th>
+<th>Action</th>
+</tr>
+
+{% for Item in page %}
+
+<tr>
+    <td>{{Item.id}}</td>
+    <td>{{Item.name}}</td>
+    <td>{{Item.price}}</td>
+    <td>{{Item.image}}</td>
+    <td>{{Item.Category}}</td>
+    <td>{{Item.Unit}}</td>
+    <td><button>View</button></td>
+
+</tr>
+{% endfor %}
+</table>
+</html>

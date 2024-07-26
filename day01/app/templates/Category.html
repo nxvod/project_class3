@@ -1,0 +1,53 @@
+<html>
+<h1>Category Management</h1>
+<form method="POST">
+    
+    {{form}}
+    <input type="submit" value="Save">
+</form>
+{{cats}}
+<form>
+<label>Name</label>
+<input/>
+<br>
+<button>Add</button>
+<button>Delete</button>
+</form>
+
+<label>Name Contains</label>
+<input/>
+<button>Search</button>
+
+<table border="1">
+<tr>
+
+<th>Id</th>
+<th>Name</th>
+<th>Action</th>
+</tr>
+
+{% for Category in page %}
+<tr>
+    <td>{{Category.id}}</td>
+    <td>{{Category.name}}</td>
+    <td><button>View</button></td>
+
+</tr>
+{% endfor %}
+</table>
+
+<div class="pagination">
+    {% if page.has_previous %}
+       <button><a href="?page=1">&laquo; First</a> </button>
+       <button><a href="?page=1{{ page.previous_page_number }}">Previous</a></button>
+    {% endif %}
+
+    page {{ page.number }} of {{ page.paginator.num_pages }}
+
+    {% if page.has_next %}
+        <button><a href="?page={{ page.next_page_number }}">Next</a></button>
+        <button><a href="?page={{ page.paginator.num_pages }}">Last &raquo;</a></button>
+    {% endif %}
+    </div> 
+
+</html>

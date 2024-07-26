@@ -1,0 +1,31 @@
+<html>
+<h1>Supplier Management</h1>
+<form method="POST">
+    {% csrf_token %} 
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+
+<label>Name Contains</label>
+<input>
+<button>Search</button>
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Mobileno</th>
+        <th>Items</th>
+        <th>Action</th>
+    </tr>
+    {% for Supplier in Supplrs %}
+    <tr>
+        <td>{{ Supplier.id }}</td>
+        <td>{{ Supplier.name }}</td>
+        <td>{{ Supplier.mobileno }}</td>
+        <td>{{ Supplier.items.all|join:", " }}</td>
+        <td><button>View</button></td>
+    </tr>
+    {% endfor %}
+</table>
+</html>
